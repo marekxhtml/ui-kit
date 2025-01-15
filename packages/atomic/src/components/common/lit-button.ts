@@ -44,12 +44,12 @@ export const button = <T>({
   children,
 }: {
   props: ButtonProps;
-  children: T;
+  children?: T;
 }) => {
   const rippleColor = getRippleColorForButtonStyle(props.style);
   const className = getClassNameForButtonStyle(props.style);
 
-  return html` <button
+  return html`<button
     type=${ifDefined(props.type)}
     title=${ifDefined(props.title)}
     tabindex=${ifDefined(props.tabIndex)}
@@ -68,7 +68,7 @@ export const button = <T>({
     @click=${props.onClick}
     ?disabled=${props.disabled}
   >
-    {props.text ? <span class="truncate">${props.text}</span> : null}
-    ${children}
+    ${props.text ? html`<span class="truncate">${props.text}</span>` : ''}
+    ${children ? children : ''}
   </button>`;
 };
