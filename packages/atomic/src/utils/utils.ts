@@ -1,4 +1,5 @@
 import DOMPurify from 'dompurify';
+import {getResourceUrl} from './resource-url';
 
 /**
  * Returns a function that can be executed only once
@@ -83,7 +84,7 @@ export function containsVisualElement(node: Node) {
 }
 
 export function getAssetPath(path: string): string {
-  const resourceUrl = import.meta.env?.RESOURCE_URL;
+  const resourceUrl = getResourceUrl();
   const baseUrl =
     resourceUrl !== undefined
       ? new URL('./', resourceUrl).href
