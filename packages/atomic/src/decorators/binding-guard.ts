@@ -8,7 +8,6 @@ import type {
 
 type LitElementWithBindings = Pick<InitializableComponent, 'bindings'> &
   LitElement;
-
 /**
  * A decorator that guards the render method based on the presence of component bindings.
  *
