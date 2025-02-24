@@ -149,7 +149,7 @@ export namespace Components {
          */
         "filterByBasePath": boolean;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount": boolean;
         /**
@@ -237,7 +237,7 @@ export namespace Components {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount": boolean;
         /**
@@ -856,7 +856,7 @@ export namespace Components {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount": boolean;
         /**
@@ -1155,7 +1155,7 @@ export namespace Components {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount": boolean;
         /**
@@ -1321,7 +1321,7 @@ export namespace Components {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount": boolean;
         /**
@@ -1603,7 +1603,7 @@ export namespace Components {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount": boolean;
         /**
@@ -1906,7 +1906,7 @@ export namespace Components {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount": boolean;
         /**
@@ -2416,7 +2416,7 @@ export namespace Components {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount": boolean;
         /**
@@ -2479,7 +2479,7 @@ export namespace Components {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount": boolean;
         /**
@@ -3489,7 +3489,7 @@ export namespace Components {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount": boolean;
         /**
@@ -3766,7 +3766,7 @@ export namespace Components {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount": boolean;
         /**
@@ -6357,7 +6357,7 @@ declare namespace LocalJSX {
          */
         "filterByBasePath"?: boolean;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount"?: boolean;
         /**
@@ -6445,7 +6445,7 @@ declare namespace LocalJSX {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount"?: boolean;
         /**
@@ -7032,7 +7032,7 @@ declare namespace LocalJSX {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount"?: boolean;
         /**
@@ -7330,7 +7330,7 @@ declare namespace LocalJSX {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount"?: boolean;
         /**
@@ -7480,7 +7480,7 @@ declare namespace LocalJSX {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount"?: boolean;
         /**
@@ -7750,7 +7750,7 @@ declare namespace LocalJSX {
          */
         "field"?: string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount"?: boolean;
         /**
@@ -8040,7 +8040,7 @@ declare namespace LocalJSX {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount"?: boolean;
         /**
@@ -8536,7 +8536,7 @@ declare namespace LocalJSX {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount"?: boolean;
         /**
@@ -8599,7 +8599,7 @@ declare namespace LocalJSX {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount"?: boolean;
         /**
@@ -9556,7 +9556,7 @@ declare namespace LocalJSX {
          */
         "field": string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount"?: boolean;
         /**
@@ -9843,7 +9843,7 @@ declare namespace LocalJSX {
          */
         "field"?: string;
         /**
-          * Whether to exclude the parents of folded results when estimating the result count for each facet value.
+          * Whether to exclude the parents of folded results when estimating the result count for each facet value.   Note: Resulting count is only an estimation, in some cases this value could be incorrect.
          */
         "filterFacetCount"?: boolean;
         /**
