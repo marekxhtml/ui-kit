@@ -54,8 +54,8 @@ export class AtomicIcon
    */
   @property({type: String}) icon: string = '';
 
-  @state() bindings?: AnyBindings;
-  @state() error?: Error;
+  @state() bindings!: AnyBindings;
+  @state() error!: Error;
   @state()
   private svg: string | null = null;
 
