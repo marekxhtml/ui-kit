@@ -110,7 +110,6 @@ export class AtomicCommercePager
   }
 
   validateProps() {
-    console.log(this.numberOfPages);
     new Schema({
       numberOfPages: new NumberValue({min: 0}),
     }).validate({
@@ -159,8 +158,8 @@ export class AtomicCommercePager
               return pagerPageButton({
                 props: {
                   isSelected: pageNumber === this.pagerState.page,
-                  ariaLabel: this.bindings.i18n.t('pager-number', {
-                    pageNumber,
+                  ariaLabel: this.bindings.i18n.t('page-number', {
+                    pageNumber: pageNumber + 1,
                   }),
                   onChecked: () => {
                     this.pager.selectPage(pageNumber);

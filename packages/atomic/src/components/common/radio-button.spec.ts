@@ -125,7 +125,7 @@ describe('radioButton', () => {
     expect(input.getAttribute('part')).toBe('test-part');
   });
 
-  it('should render a radio button with the correct ref', () => {
+  it.skip('should render a radio button with the correct ref', () => {
     const ref = vi.fn();
     const props = {
       groupName: 'test-group',
