@@ -7,7 +7,7 @@ import {fetchBindings} from '../utils/initialization-lit-stencil-common-utils';
 
 export const bindingsContext = createContext<AnyBindings>('bindings');
 
-function initializeBindings<
+export function initializeBindings<
   SpecificBindings extends AnyBindings,
   InstanceType extends ReactiveElement &
     InitializableComponent<SpecificBindings>,
@@ -37,8 +37,7 @@ type Constructor<T = {}> = new (...args: any[]) => T;
 
 /**
  * Mixin that initializes bindings for a Lit component.
- * It ensures that the bindings are initialized when the host element is instantiated
- * by creating an instance of the `BindingController`.
+ * It ensures that the bindings are initialized using the binding context provided when the host element is instantiated.
  *
  * @param superClass - The LitElement class to extend.
  * @returns A class that extends the superclass with bindings initialization.
@@ -66,6 +65,13 @@ export const InitializeBindingsMixin = <T extends Constructor<LitElement>>(
     constructor(...args: any[]) {
       super(...args);
       this.host = this as ReactiveControllerHost;
+    }
+
+    disconnectedCallback(): void {
+      super.disconnectedCallback();
+      if (this.bindingsInitialized) {
+        this.bindings.i18n.off('languageChanged', this.requestUpdate);
+      }
     }
 
     @watch('bindings')

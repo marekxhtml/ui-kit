@@ -5,7 +5,7 @@ import {Mock, vi} from 'vitest';
 import type {Bindings} from '../components/search/atomic-search-interface/interfaces';
 import {InitializableComponent} from '../decorators/types';
 import {fetchBindings} from '../utils/initialization-lit-stencil-common-utils';
-import {InitializeBindingsMixin} from './bindings-mixin';
+import {initializeBindings, InitializeBindingsMixin} from './bindings-mixin';
 
 vi.mock('../utils/initialization-lit-stencil-common-utils', () => ({
   fetchBindings: vi.fn(),
@@ -42,10 +42,11 @@ describe('InitializeBindingsMixin mixin', () => {
     element = document.createElement(tag) as InitializableComponent<Bindings> &
       T;
     document.body.appendChild(element);
+    element.bindings = bindings;
     await element.updateComplete;
   };
 
-  const teardownElement = () => {
+  const teardownElement = async () => {
     if (document.body.contains(element)) {
       document.body.removeChild(element);
     }
@@ -67,6 +68,7 @@ describe('InitializeBindingsMixin mixin', () => {
   it('should subscribe to language changes', async () => {
     vi.spyOn(bindings.i18n, 'on');
     await setupElement();
+
     expect(element.bindings?.i18n.on).toHaveBeenCalled();
   });
 
@@ -89,10 +91,15 @@ describe('InitializeBindingsMixin mixin', () => {
     expect(element.initialize).toHaveBeenCalled();
   });
 
-  it('should return an error to the element if unable to fetch bindings', async () => {
-    mockedFetchBindings.mockRejectedValue(new Error('test-element'));
-    await setupElement();
+  test('should handle fetchBindings rejection gracefully', async () => {
+    // Mock fetchBindings to return a rejected promise
+    mockedFetchBindings.mockRejectedValue(
+      new Error('Failed to fetch bindings')
+    );
 
-    expect(element.error).toBeInstanceOf(Error);
+    // Call the function and expect it to reject
+    await expect(initializeBindings(element)).rejects.toThrow(
+      'Failed to fetch bindings'
+    );
   });
 });
