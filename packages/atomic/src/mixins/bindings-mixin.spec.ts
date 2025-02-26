@@ -11,6 +11,8 @@ vi.mock('../utils/initialization-lit-stencil-common-utils', () => ({
   fetchBindings: vi.fn(),
 }));
 
+vi.unmock('./bindings-mixin');
+
 const mockBindings = () =>
   ({
     i18n: i18next.createInstance(),
@@ -50,6 +52,11 @@ describe('InitializeBindingsMixin mixin', () => {
       document.body.removeChild(element);
     }
   };
+
+  beforeAll(() => {
+    // Clear all mocks set up by the global setup
+    vi.restoreAllMocks();
+  });
 
   beforeEach(async () => {
     bindings = mockBindings();

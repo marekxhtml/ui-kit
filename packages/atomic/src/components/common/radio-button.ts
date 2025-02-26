@@ -2,7 +2,7 @@ import {FunctionalComponent} from '@/src/utils/functional-component-utils';
 import {html} from 'lit';
 import {classMap} from 'lit/directives/class-map.js';
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {ref, RefOrCallback} from 'lit/directives/ref.js';
+import {RefOrCallback} from 'lit/directives/ref.js';
 import {createRipple} from '../../utils/ripple';
 import {
   ButtonStyle,
@@ -123,7 +123,7 @@ export const radioButton: FunctionalComponent<RadioButtonProps> = ({props}) => {
       @change=${onChange}
       @keydown=${handleKeyDown}
       @mousedown=${onMouseDown}
-      ${ref(props.ref)}
+      ref=${props.ref}
     />
   `;
 };
