@@ -154,9 +154,19 @@ export function assertConsoleErrorMessage(msg: string) {
 
 export function assertConsoleWarning(warn = true) {
   it(`${should(warn)} log a warning to the console`, () => {
-    cy.get(TestFixture.consoleAliases.warn).should(
-      warn ? 'be.called' : 'not.be.called'
-    );
+    cy.get(TestFixture.consoleAliases.warn).should((spy) => {
+      const calls = spy.getCalls();
+      const filteredCalls = calls.filter(
+        (call) => !call.args[0].includes('Lit is in dev mode.')
+      );
+
+      // Assert based on whether we expect a warning (excluding the filtered message)
+      if (warn) {
+        expect(filteredCalls).to.have.length.greaterThan(0);
+      } else {
+        expect(filteredCalls).to.have.lengthOf(0);
+      }
+    });
   });
 }
 
