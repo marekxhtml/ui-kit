@@ -53,11 +53,6 @@ describe('InitializeBindingsMixin mixin', () => {
     }
   };
 
-  beforeAll(() => {
-    // Clear all mocks set up by the global setup
-    vi.restoreAllMocks();
-  });
-
   beforeEach(async () => {
     bindings = mockBindings();
     bindings.i18n.init();

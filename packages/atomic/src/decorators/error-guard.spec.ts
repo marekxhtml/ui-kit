@@ -3,8 +3,6 @@ import {customElement, state} from 'lit/decorators.js';
 import {vi} from 'vitest';
 import {errorGuard} from './error-guard';
 
-vi.unmock('./error-guard');
-
 describe('@errorGuard decorator', () => {
   const renderSpy = vi.fn();
   const initialRenderCalls = 1;

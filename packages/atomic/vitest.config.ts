@@ -59,6 +59,7 @@ export default defineConfig({
       moduleDirectories: ['node_modules', path.resolve('../../packages')],
     },
     browser: {
+      provider: 'playwright',
       enabled: true,
       instances: [
         {
