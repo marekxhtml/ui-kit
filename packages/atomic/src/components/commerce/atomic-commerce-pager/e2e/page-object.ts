@@ -1,7 +1,7 @@
-import {BasePageObject} from '@/playwright-utils/base-page-object';
+import {BasePageObject} from '@/playwright-utils/lit-base-page-object';
 import type {Page} from '@playwright/test';
 
-export class AtomicCommercePagerLocators extends BasePageObject<'atomic-commerce-pager'> {
+export class AtomicCommercePagerLocators extends BasePageObject {
   constructor(page: Page) {
     super(page, 'atomic-commerce-pager');
   }

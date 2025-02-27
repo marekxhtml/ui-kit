@@ -32,6 +32,7 @@ vi.mock('@coveo/headless/commerce', () => {
   };
 });
 
+// Retry the render from Lit instead of append body
 describe('AtomicCommercePager', () => {
   let element: AtomicCommercePager;
 
