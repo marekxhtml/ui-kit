@@ -40,8 +40,8 @@
       "import": "./dist/atomic/components/components/index.js"
     },
     "./components/commerce/*": {
-      "import": "./dist/atomic/components/components/commerce/*",
-      "require": "./dist/atomic/themes/*"
+      "types": "./dist/atomic/components/components/commerce/index.d.ts",
+      "import": "./dist/atomic/components/components/commerce/*"
     },
     "./custom-elements-manifest": "./custom-elements.json"
   },
