@@ -130,7 +130,6 @@ export class AtomicCommercePager
     );
     return html`${pagerGuard({
       props: {
-        //This hasError needs to be removed
         hasError: false,
         hasItems: this.pagerState.totalPages > 1,
         isAppLoaded: this.isAppLoaded,
