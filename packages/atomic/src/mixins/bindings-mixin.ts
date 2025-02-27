@@ -1,13 +1,14 @@
-import {consume, createContext} from '@lit/context';
-import {LitElement, ReactiveControllerHost, ReactiveElement} from 'lit';
+import {
+  LitElement,
+  ReactiveController,
+  ReactiveControllerHost,
+  ReactiveElement,
+} from 'lit';
 import type {AnyBindings} from '../components/common/interface/bindings';
 import {InitializableComponent} from '../decorators/types';
-import {watch} from '../decorators/watch';
 import {fetchBindings} from '../utils/initialization-lit-stencil-common-utils';
 
-export const bindingsContext = createContext<AnyBindings>('bindings');
-
-export function initializeBindings<
+function initializeBindings<
   SpecificBindings extends AnyBindings,
   InstanceType extends ReactiveElement &
     InitializableComponent<SpecificBindings>,
@@ -32,12 +33,56 @@ export function initializeBindings<
   });
 }
 
+/**
+ * The `BindingController` is a Lit reactive controller that fetches bindings
+ * and adds them to the host class. It ensures that the bindings are initialized
+ * when the host element is connected to the DOM and cleaned up when the host
+ * element is disconnected.
+ *
+ * To fetch the bindings, the host must extend the `InitializeBindingsMixin` mixin.
+ * If the host class does not extend the mixin, the host class must instantiate the this controller in the Constructor
+ * @example
+ * ```ts
+ * constructor() {
+ *  super();
+ *  new BindingController(this);
+ * }
+ * ```
+ *
+ */
+export class BindingController implements ReactiveController {
+  host: ReactiveControllerHost;
+
+  private unsubscribeLanguage = () => {};
+
+  constructor(host: ReactiveControllerHost) {
+    (this.host = host).addController(this);
+  }
+
+  hostConnected() {
+    initializeBindings(
+      this.host as ReactiveElement & InitializableComponent<AnyBindings>
+    )
+      .then((unsubscribeLanguage) => {
+        this.unsubscribeLanguage = unsubscribeLanguage;
+      })
+      .catch((error) => {
+        this.host = error;
+      });
+  }
+
+  hostDisconnected() {
+    this.unsubscribeLanguage();
+  }
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Constructor<T = {}> = new (...args: any[]) => T;
 
 /**
  * Mixin that initializes bindings for a Lit component.
- * It ensures that the bindings are initialized using the binding context provided when the host element is instantiated.
+ * It ensures that the bindings are initialized when the host element is instantiated
+ * by creating an instance of the `BindingController`.
  *
  * @param superClass - The LitElement class to extend.
  * @returns A class that extends the superclass with bindings initialization.
@@ -54,34 +99,14 @@ export const InitializeBindingsMixin = <T extends Constructor<LitElement>>(
   superClass: T
 ) => {
   class BindingControllerMixinClass extends superClass {
-    host: ReactiveControllerHost;
-
-    @consume({context: bindingsContext, subscribe: true})
-    public bindings!: AnyBindings;
-
-    private bindingsInitialized = false;
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     constructor(...args: any[]) {
       super(...args);
-      this.host = this as ReactiveControllerHost;
+      this.initBindings();
     }
 
-    disconnectedCallback(): void {
-      super.disconnectedCallback();
-      if (this.bindingsInitialized) {
-        this.bindings.i18n.off('languageChanged', this.requestUpdate);
-      }
-    }
-
-    @watch('bindings')
-    public bindingsChanged() {
-      if (!this.bindingsInitialized && this.bindings) {
-        this.bindingsInitialized = true;
-        initializeBindings(
-          this.host as ReactiveElement & InitializableComponent<AnyBindings>
-        );
-      }
+    private initBindings() {
+      new BindingController(this);
     }
   }
 
