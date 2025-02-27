@@ -7,7 +7,7 @@ export class AtomicCommercePagerLocators extends BasePageObject {
   }
 
   get errorComponent() {
-    return this.page.locator('atomic-component-error');
+    return this.page.getByText('atomic-commerce-pager component error');
   }
 
   get pages() {
