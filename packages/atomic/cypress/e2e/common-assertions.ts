@@ -160,7 +160,6 @@ export function assertConsoleWarning(warn = true) {
         (call) => !call.args[0].includes('Lit is in dev mode.')
       );
 
-      // Assert based on whether we expect a warning (excluding the filtered message)
       if (warn) {
         expect(filteredCalls).to.have.length.greaterThan(0);
       } else {

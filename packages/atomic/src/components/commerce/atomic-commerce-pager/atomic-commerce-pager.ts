@@ -110,7 +110,7 @@ export class AtomicCommercePager
     });
   }
 
-  validateProps() {
+  private validateProps() {
     new Schema({
       numberOfPages: new NumberValue({min: 0}),
     }).validate({
